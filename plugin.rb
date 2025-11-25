@@ -15,6 +15,9 @@ end
 require_relative "lib/discourse_event_description_limit/engine"
 
 after_initialize do
+  next unless SiteSetting.discourse_event_description_limit_enabled
+  next unless defined?(DiscoursePostEvent::Event)
+
   event_class = DiscoursePostEvent::Event
 
   if event_class.const_defined?(:MAX_DESCRIPTION_LENGTH)
@@ -22,11 +25,11 @@ after_initialize do
   end
   event_class.const_set(:MAX_DESCRIPTION_LENGTH, SiteSetting.event_description_max_length)
 
-  event_class.validators_on(:description).each do |validator|
+  event_class.validators_on(:description).dup.each do |validator|
     event_class._validators[:description].delete(validator)
   end
 
-  event_class._validate_callbacks.each do |callback|
+  event_class._validate_callbacks.dup.each do |callback|
     filter = callback.filter
     if filter.respond_to?(:attributes) &&
        filter.attributes.include?(:description)
