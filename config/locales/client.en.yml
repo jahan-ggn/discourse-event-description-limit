@@ -3,7 +3,7 @@ en:
     admin:
       site_settings:
         categories:
-          TODO_plugin_name: "Plugin Name"
+          discourse_event_description_limit: "Discourse Event Description Limit"
   js:
-    discourse_plugin_name:
+    discourse_event_description_limit:
       placeholder: placeholder
