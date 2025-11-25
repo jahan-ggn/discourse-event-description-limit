@@ -1,1 +1,4 @@
 en:
+  site_settings:
+    discourse_event_description_limit_enabled: "Enable event description length control"
+    event_description_max_length: "Maximum description length for events"

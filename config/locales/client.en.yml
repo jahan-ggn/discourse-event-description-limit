@@ -6,4 +6,5 @@ en:
           discourse_event_description_limit: "Discourse Event Description Limit"
   js:
     discourse_event_description_limit:
-      placeholder: placeholder
+      title: "Discourse Event Description Limit"
+      admin_navigation: "Discourse Event Description Limit"
